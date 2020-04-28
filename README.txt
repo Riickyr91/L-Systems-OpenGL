@@ -12,3 +12,6 @@ My tree is 3D. I did this by rotating in all three axis when a clockwise or coun
 My tree blows in the wind by changing the angle of rotation for the branches by using a pseudo random number. The change in angle is dictated by the value of the random number.
 
 Modified by Jose Carpio to include Visual Studio 2019 project
+
+Check this website if you need extra configuration:
+http://www.cs.uregina.ca/Links/class-info/315/WWW/Lab1/GLUT/windows.html
