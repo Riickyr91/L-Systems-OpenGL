@@ -1,7 +1,8 @@
 {
   "ExpandedNodes": [
-    ""
+    "",
+    "\\l-system-tree"
   ],
-  "SelectedNode": "\\l-system-tree",
+  "SelectedNode": "\\l-system-tree\\l-system-tree.cpp",
   "PreviewInSolutionExplorer": false
 }
