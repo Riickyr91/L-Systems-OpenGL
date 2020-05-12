@@ -77,8 +77,8 @@
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
     <LinkIncremental>true</LinkIncremental>
-    <IncludePath>C:\Users\Jose\source\repos\L-Systems-OpenGL\Include;$(IncludePath)</IncludePath>
-    <LibraryPath>C:\Users\Jose\source\repos\L-Systems-OpenGL\Lib;$(LibraryPath)</LibraryPath>
+    <IncludePath>C:\Users\Ricar\Dropbox\Universidad\Asignaturas\3 Tercero\Realidad Virtual\Practica\L-Systems-OpenGL\Codigo\Include;$(IncludePath)</IncludePath>
+    <LibraryPath>C:\Users\Ricar\Dropbox\Universidad\Asignaturas\3 Tercero\Realidad Virtual\Practica\L-Systems-OpenGL\Codigo\Lib;$(LibraryPath)</LibraryPath>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
     <LinkIncremental>false</LinkIncremental>
