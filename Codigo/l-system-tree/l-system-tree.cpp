@@ -36,23 +36,26 @@
 
 using namespace std;
 
-const float PI = 3.14F, DEPTH = 6;
+//DEPTH -> Altura
+const float PI = 3.14F, DEPTH = 4;
+
 // Start and end of camera movement
 const int ENDX = 10, STARTX = -500;
+
 // Angle of branches, and depth of tree
 float ANGLE = 20, depth = 0;
-vector<string>* trees = new vector<string>();
 
+vector<string>* trees = new vector<string>();
 
 double lastTime = 0, elapsedTime = 0, lastElapsedTime = 0;
 
 bool cam = false;
 
-float eyeX, eyeY, eyeZ, lookX, lookY, lookZ,
-upX, upY, upZ, fieldOfView, length = 0.001F, num = 0,
-incr = 0.1F;
+float eyeX, eyeY, eyeZ, lookX, lookY, lookZ, upX, upY, upZ, fieldOfView, length = 0.001F, num = 0, incr = 0.1F;
 
-float lineWidth = 5;
+// Grosor tronco
+float lineWidth = 6;
+
 // L-System
 string str = "X";
 
@@ -80,12 +83,13 @@ void rotR() {
 }
 
 void leaf() {
+
 	glPushAttrib(GL_LIGHTING_BIT);//saves current lighting stuff
-		//glColor3f(0.50, 1.0, 0.0);
+
+	//glColor3f(0.50, 1.0, 0.0);
 	GLfloat ambient[4] = { 0.50F, 1.0F, 0.0F };    // ambient reflection
 	GLfloat specular[4] = { 0.55F, 1.0F, 0.0F };   // specular reflection
 	GLfloat diffuse[4] = { 0.50F, 0.9F, 0.0F };   // diffuse reflection
-
 
 	// set the ambient reflection for the object
 	glMaterialfv(GL_FRONT_AND_BACK, GL_AMBIENT, ambient);
@@ -109,10 +113,10 @@ void leaf() {
 }
 
 void drawLine() {
+
 	glPushAttrib(GL_LIGHTING_BIT);//saves current lighting stuff
-
-
-			//glColor3f(0.55, 0.27, 0.07);
+	
+	//glColor3f(0.55, 0.27, 0.07);
 	GLfloat ambient[4] = { 0.55F, 0.27F, 0.07F };    // ambient reflection
 	GLfloat specular[4] = { 0.55F, 0.27F, 0.07F };   // specular reflection
 	GLfloat diffuse[4] = { 0.55F, 0.27F, 0.07F };   // diffuse reflection
@@ -120,8 +124,10 @@ void drawLine() {
 
 	// set the ambient reflection for the object
 	glMaterialfv(GL_FRONT_AND_BACK, GL_AMBIENT, ambient);
+
 	// set the diffuse reflection for the object
 	glMaterialfv(GL_FRONT_AND_BACK, GL_DIFFUSE, diffuse);
+
 	// set the specular reflection for the object      
 	//glMaterialfv(GL_FRONT_AND_BACK, GL_SPECULAR, specular);
 	glLineWidth(lineWidth);
@@ -135,7 +141,6 @@ void drawLine() {
 	glTranslatef(0, length, 0);
 	glPopAttrib();
 }
-
 
 void draw() {
 
@@ -171,30 +176,63 @@ void expand(float num) {
 	for (int i = 0; i < str.length(); i++) {
 		ch = str.at(i);
 
+		//Arbol 1 / 4 / 5 / 6
 		if (ch.compare("D") == 0) {
 			str.replace(i, 1, "DD");
 			i = i + 1;
 		}
-		else if (ch.compare("X") == 0) {
+		
+		//else
+		if (ch.compare("X") == 0) {
 
 			if (num < 0.4) {
 				//LSystem.replace(i, 1, "D[LX]D[RX]LX");
-				str.replace(i, 1, "D[LXV]D[RXV]LX");
+				// Arbol 1
+				//str.replace(i, 1, "D[LXV]D[RXV]LX");
+				// Arbol 2
+				//str.replace(i, 1, "D[RDXV]D[LDXV]DX");
+				// Arbol 3
+				//str.replace(i, 1, "D[RXV]D[LXV][X]X");
+				// Arbol 4
+				//str.replace(i, 1, "D[RX][LX]RX");
+				// Arbol 5
+				str.replace(i, 1, "D[RX][LX]DX");
+				// Arbol 6
+				//str.replace(i, 1, "DL[[X]RX]RD[RDX]LX");
 
 			}
 			else {
-				//LSystem.replace(i, 1, "D[RX]D[LX]RX");
-				str.replace(i, 1, "D[RXV]D[LXV]RX");
+				//LSystem.replace(i, 1, "D[RX]D[LX]RX");sa
+				// Arbol 1
+				//str.replace(i, 1, "D[RXV]D[LXV]RX");
+				// Arbol 2
+				//str.replace(i, 1, "D[LDXV]D[RDXV]DX");
+				// Arbol 3
+				//str.replace(i, 1, "D[LXV]D[RXV]X");
+				// Arbol 4
+				//str.replace(i, 1, "D[LX][RX]LX");
+				// Arbol 5
+				str.replace(i, 1, "D[LX][RX]DX");
+				// Arbol 6
+				//str.replace(i, 1, "DR[[X]LX]LD[LDX]RX");
+
 			}
-			i = i + 13;	//11
+			//i = i + 13;
+			//i = i + 15; // 2 y 3
+			//i = i + 13;
+			i = i + 10;
+			//i = i + 17;
 		}
 
 	}
 	trees->push_back(str);
 }
 
-
 void display(void) {
+
+	// Color de Fondo
+	glClearColor(1.0f, 1.0f, 1.0f, 1.0f);
+
 	// start by clearing the screen and depth buffer
 	glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
 	glMatrixMode(GL_PROJECTION);
@@ -210,9 +248,11 @@ void display(void) {
 
 	glPushAttrib(GL_LIGHTING_BIT); //saves current lighting stuff
 	GLfloat ambient[4] = { 0.82F, 0.41F, 0.12F };    // ambient reflection
-	GLfloat diffuse[4] = { 0.82F, 0.41F, 0.12F };   // diffuse reflection    
-		// set the ambient reflection for the object
+	GLfloat diffuse[4] = { 0.82F, 0.41F, 0.12F };   // diffuse reflection 
+
+	// set the ambient reflection for the object
 	glMaterialfv(GL_FRONT_AND_BACK, GL_AMBIENT, ambient);
+
 	// set the diffuse reflection for the object
 	glMaterialfv(GL_FRONT_AND_BACK, GL_DIFFUSE, diffuse);
 
@@ -234,6 +274,7 @@ void display(void) {
 }
 
 void animate() {
+	
 	if (lastTime == 0)
 		lastTime = timeGetTime();
 
@@ -242,7 +283,7 @@ void animate() {
 	// Change the angle to make it blow in the wind
 	float numR = (float)rand() / RAND_MAX;
 
-
+	/*
 	if (ANGLE > 21.5) {
 		if (numR < 0.5) {
 			incr = -0.15F;
@@ -259,8 +300,12 @@ void animate() {
 			incr = 0.1F;
 		}
 	}
-	ANGLE += incr;
+	*/
 
+	incr = 0;
+
+	ANGLE += incr;
+	
 	if (depth < DEPTH)
 		length += 0.001F;
 
@@ -276,6 +321,7 @@ void animate() {
 
 	if (cam)
 		eyeX = p;
+	
 	glutPostRedisplay();
 
 }
@@ -319,10 +365,12 @@ void keyboard(unsigned char key, int x, int y)
 }
 
 int main(int argc, char** argv) {
+
 	glutInit(&argc, argv);
 	glutInitDisplayMode(GLUT_DOUBLE | GLUT_RGB | GLUT_DEPTH);
 	glutInitWindowSize(1000, 800);
 	glutInitWindowPosition(0, 0);
+
 	glutCreateWindow("Erik Paluka");
 
 	fieldOfView = 45;
@@ -334,7 +382,6 @@ int main(int argc, char** argv) {
 	lookZ = 0;
 	srand(time(NULL));
 	num = (float)rand() / RAND_MAX;
-
 
 	// set the lighting
 	glShadeModel(GL_SMOOTH);
@@ -355,7 +402,6 @@ int main(int argc, char** argv) {
 
 	glEnable(GL_LIGHTING);
 	glEnable(GL_LIGHT0);
-
 
 	/* Use depth buffering for hidden surface elimination. */
 	glEnable(GL_DEPTH_TEST);

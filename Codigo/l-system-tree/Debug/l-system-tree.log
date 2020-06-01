@@ -1,7 +1,7 @@
 ﻿  l-system-tree.cpp
-C:\Users\Ricar\Dropbox\Universidad\Asignaturas\3 Tercero\Realidad Virtual\Practica\L-Systems-OpenGL\Codigo\l-system-tree\l-system-tree.cpp(143,29): warning C4244: 'argumento': conversión de 'float' a 'const unsigned int'; posible pérdida de datos
-C:\Users\Ricar\Dropbox\Universidad\Asignaturas\3 Tercero\Realidad Virtual\Practica\L-Systems-OpenGL\Codigo\l-system-tree\l-system-tree.cpp(144,20): warning C4018: '<': no coinciden signed/unsigned
-C:\Users\Ricar\Dropbox\Universidad\Asignaturas\3 Tercero\Realidad Virtual\Practica\L-Systems-OpenGL\Codigo\l-system-tree\l-system-tree.cpp(171,20): warning C4018: '<': no coinciden signed/unsigned
-C:\Users\Ricar\Dropbox\Universidad\Asignaturas\3 Tercero\Realidad Virtual\Practica\L-Systems-OpenGL\Codigo\l-system-tree\l-system-tree.cpp(274,10): warning C4244: 'inicializando': conversión de 'double' a 'float'; posible pérdida de datos
-C:\Users\Ricar\Dropbox\Universidad\Asignaturas\3 Tercero\Realidad Virtual\Practica\L-Systems-OpenGL\Codigo\l-system-tree\l-system-tree.cpp(335,12): warning C4244: 'argumento': conversión de 'time_t' a 'unsigned int'; posible pérdida de datos
+C:\Users\Ricar\Dropbox\Universidad\Asignaturas\3 Tercero\Realidad Virtual\Practica\L-Systems-OpenGL\Codigo\l-system-tree\l-system-tree.cpp(148,29): warning C4244: 'argumento': conversión de 'float' a 'const unsigned int'; posible pérdida de datos
+C:\Users\Ricar\Dropbox\Universidad\Asignaturas\3 Tercero\Realidad Virtual\Practica\L-Systems-OpenGL\Codigo\l-system-tree\l-system-tree.cpp(149,20): warning C4018: '<': no coinciden signed/unsigned
+C:\Users\Ricar\Dropbox\Universidad\Asignaturas\3 Tercero\Realidad Virtual\Practica\L-Systems-OpenGL\Codigo\l-system-tree\l-system-tree.cpp(176,20): warning C4018: '<': no coinciden signed/unsigned
+C:\Users\Ricar\Dropbox\Universidad\Asignaturas\3 Tercero\Realidad Virtual\Practica\L-Systems-OpenGL\Codigo\l-system-tree\l-system-tree.cpp(319,10): warning C4244: 'inicializando': conversión de 'double' a 'float'; posible pérdida de datos
+C:\Users\Ricar\Dropbox\Universidad\Asignaturas\3 Tercero\Realidad Virtual\Practica\L-Systems-OpenGL\Codigo\l-system-tree\l-system-tree.cpp(383,12): warning C4244: 'argumento': conversión de 'time_t' a 'unsigned int'; posible pérdida de datos
   l-system-tree.vcxproj -> C:\Users\Ricar\Dropbox\Universidad\Asignaturas\3 Tercero\Realidad Virtual\Practica\L-Systems-OpenGL\Codigo\Debug\l-system-tree.exe
