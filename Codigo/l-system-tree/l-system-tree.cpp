@@ -34,10 +34,14 @@
 #include <math.h>
 #include <time.h>
 
+#define LIMPIA system("CLS")
+
+
 using namespace std;
 
 //DEPTH -> Altura
-const float PI = 3.14F, DEPTH = 4;
+const float PI = 3.14F;
+float DEPTH = 4;
 
 // Start and end of camera movement
 const int ENDX = 10, STARTX = -500;
@@ -51,13 +55,16 @@ double lastTime = 0, elapsedTime = 0, lastElapsedTime = 0;
 
 bool cam = false;
 
-float eyeX, eyeY, eyeZ, lookX, lookY, lookZ, upX, upY, upZ, fieldOfView, length = 0.001F, num = 0, incr = 0.1F;
+float eyeX, eyeY, eyeZ, lookX, lookY, lookZ, upX, upY, upZ, fieldOfView, length = 0.01F, num = 0, incr = 0.1F;
 
 // Grosor tronco
 float lineWidth = 6;
 
 // L-System
 string str = "X";
+
+// seleccion de tipo de arbol
+int kindOfTree = 4;
 
 void push() {
 	glPushMatrix();
@@ -181,50 +188,49 @@ void expand(float num) {
 			str.replace(i, 1, "DD");
 			i = i + 1;
 		}
-		
+
 		//else
 		if (ch.compare("X") == 0) {
 
 			if (num < 0.4) {
-				//LSystem.replace(i, 1, "D[LX]D[RX]LX");
-				// Arbol 1
-				//str.replace(i, 1, "D[LXV]D[RXV]LX");
-				// Arbol 2
-				//str.replace(i, 1, "D[RDXV]D[LDXV]DX");
-				// Arbol 3
-				//str.replace(i, 1, "D[RXV]D[LXV][X]X");
-				// Arbol 4
-				//str.replace(i, 1, "D[RX][LX]RX");
-				// Arbol 5
-				str.replace(i, 1, "D[RX][LX]DX");
-				// Arbol 6
-				//str.replace(i, 1, "DL[[X]RX]RD[RDX]LX");
+
+				switch (kindOfTree) {
+				case 1: str.replace(i, 1, "D[LXV]D[RXV]LX");	 break; // Arbol 1
+				case 2: str.replace(i, 1, "D[RDXV]D[LDXV]DX");	 break; // Arbol 2
+				case 3: str.replace(i, 1, "D[RXV]D[LXV][X]X");	 break; // Arbol 3
+				case 4: str.replace(i, 1, "D[RX][LX]RX");		 break; // Arbol 4
+				case 5: str.replace(i, 1, "D[RX][LX]DX");		 break; // Arbol 5
+				case 6: str.replace(i, 1, "DL[[X]RX]RD[RDX]LX"); break; // Arbol 6
+				}
+
 
 			}
 			else {
-				//LSystem.replace(i, 1, "D[RX]D[LX]RX");sa
-				// Arbol 1
-				//str.replace(i, 1, "D[RXV]D[LXV]RX");
-				// Arbol 2
-				//str.replace(i, 1, "D[LDXV]D[RDXV]DX");
-				// Arbol 3
-				//str.replace(i, 1, "D[LXV]D[RXV]X");
-				// Arbol 4
-				//str.replace(i, 1, "D[LX][RX]LX");
-				// Arbol 5
-				str.replace(i, 1, "D[LX][RX]DX");
-				// Arbol 6
-				//str.replace(i, 1, "DR[[X]LX]LD[LDX]RX");
+
+				switch (kindOfTree) {
+				case 1: str.replace(i, 1, "D[RXV]D[LXV]RX");	 break; // Arbol 1
+				case 2: str.replace(i, 1, "D[LDXV]D[RDXV]DX");	 break; // Arbol 2
+				case 3: str.replace(i, 1, "D[LXV]D[RXV]X");		 break; // Arbol 3
+				case 4: str.replace(i, 1, "D[LX][RX]LX");		 break; // Arbol 4
+				case 5: str.replace(i, 1, "D[LX][RX]DX");		 break; // Arbol 5
+				case 6: str.replace(i, 1, "DR[[X]LX]LD[LDX]RX"); break; // Arbol 6
+				}
+
 
 			}
-			//i = i + 13;
-			//i = i + 15; // 2 y 3
-			//i = i + 13;
-			i = i + 10;
-			//i = i + 17;
-		}
 
+			switch (kindOfTree) {
+			case 1: i = i + 13; break; // arbol 1
+			case 2:
+			case 3: i = i + 15; break; // arbol 2 y 3
+			case 4: i = i + 13; break; // arbol 4
+			case 5: i = i + 10; break; // arbol 5
+			case 6: i = i + 17;  break; // arbol 6
+			}
+
+		}
 	}
+
 	trees->push_back(str);
 }
 
@@ -364,6 +370,26 @@ void keyboard(unsigned char key, int x, int y)
 	}
 }
 
+// Funcion que muestra el menú por consola
+void menu() {
+	do {
+		LIMPIA;
+		cout << "Escoge tipo de arbol [1-6]: ";
+		cin >> kindOfTree;
+
+	} while (kindOfTree < 1 || kindOfTree > 7);
+
+	
+	switch (kindOfTree) {
+	case 1: ANGLE = 25.7;	DEPTH = 5; break;
+	case 2: ANGLE = 20;		DEPTH = 5; break;
+	case 3: ANGLE = 22.5;	DEPTH = 4; break;
+	case 4: ANGLE = 20;		DEPTH = 7; break;
+	case 5: ANGLE = 25.7;	DEPTH = 7; break;
+	case 6: ANGLE = 22.5;	DEPTH = 5; break;
+	} 
+}
+
 int main(int argc, char** argv) {
 
 	glutInit(&argc, argv);
@@ -405,6 +431,10 @@ int main(int argc, char** argv) {
 
 	/* Use depth buffering for hidden surface elimination. */
 	glEnable(GL_DEPTH_TEST);
+
+
+	menu();
+	
 
 	glutDisplayFunc(display);
 	glutKeyboardFunc(keyboard);
