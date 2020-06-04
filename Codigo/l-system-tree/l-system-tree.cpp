@@ -41,7 +41,7 @@ using namespace std;
 
 //DEPTH -> Altura
 const float PI = 3.14F;
-float DEPTH = 4;
+float DEPTH = 1;
 
 // Start and end of camera movement
 const int ENDX = 10, STARTX = -500;
@@ -312,8 +312,13 @@ void animate() {
 
 	ANGLE += incr;
 	
-	if (depth < DEPTH)
+
+	// Crear una variable lengthMax y asociarle un máximo a cada árbol en el case
+
+	if (depth < DEPTH && length < 1.32501)
 		length += 0.001F;
+
+	//cout << length << "\n";
 
 	if (elapsedTime - lastElapsedTime > 2000 && depth < DEPTH) {
 		depth++;
@@ -372,6 +377,7 @@ void keyboard(unsigned char key, int x, int y)
 
 // Funcion que muestra el menú por consola
 void menu() {
+
 	do {
 		LIMPIA;
 		cout << "Escoge tipo de arbol [1-6]: ";
@@ -391,6 +397,8 @@ void menu() {
 }
 
 int main(int argc, char** argv) {
+
+	menu();
 
 	glutInit(&argc, argv);
 	glutInitDisplayMode(GLUT_DOUBLE | GLUT_RGB | GLUT_DEPTH);
@@ -431,10 +439,6 @@ int main(int argc, char** argv) {
 
 	/* Use depth buffering for hidden surface elimination. */
 	glEnable(GL_DEPTH_TEST);
-
-
-	menu();
-	
 
 	glutDisplayFunc(display);
 	glutKeyboardFunc(keyboard);
