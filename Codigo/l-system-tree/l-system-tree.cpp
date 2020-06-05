@@ -33,8 +33,11 @@
 #include <string>
 #include <math.h>
 #include <time.h>
+#include <locale.h>
+
 
 #define LIMPIA system("CLS")
+#define ESPERA system("pause")
 
 
 using namespace std;
@@ -67,7 +70,7 @@ float lengthMax;
 string str = "X";
 
 // seleccion de tipo de arbol
-int kindOfTree = 4;
+int kindOfTree = -1;
 
 void push() {
 	glPushMatrix();
@@ -356,25 +359,68 @@ void keyboard(unsigned char key, int x, int y)
 	}
 }
 
+
+
+// Funcion que muestra los autores del programa
+void cabecera() {
+	cout << "***************************** L-SYSTEM  ******************************\n";
+	cout << "\t\t\tRealizado por: \n";
+	cout << "\t\t\t\t Marina Delgado\n";
+	cout << "\t\t\t\t Ricardo Manuel Ruiz\n";
+	cout << "**********************************************************************\n\n";
+}
+
 // Funcion que muestra el menú por consola
 void menu() {
 
 	do {
 		LIMPIA;
-		cout << "***************************** L-SYSTEM  ******************************\n";
-		cout << "\t\t\tRealizado por: \n";
-		cout << "\t\t\t\t Marina Delgado\n";
-		cout << "\t\t\t\t Ricardo Manuel Ruiz\n";
-		cout << "**********************************************************************\n\n";
+		cabecera();
 		cout << "\nEscoge tipo de arbol [1-6]: ";
 		cin >> kindOfTree;
 
 		if (kindOfTree < 1 || kindOfTree > 7) {
 			cout << "\n\t Tecla erronea \n";
-			system("pause");
+			ESPERA;
 		}
 
 	} while (kindOfTree < 1 || kindOfTree > 7);
+
+
+	LIMPIA;
+	cabecera();
+
+	cout << "\nÁrbol seleccionado: " << kindOfTree;
+	cout << "\n\nParámetros por defecto del árbol seleccionado:";
+	cout << "\n\n\tAncho de línea -> " << lineWidth;
+	cout << "\n\tÁngulo -> " << ANGLE;
+	cout << endl << endl;
+
+	char opcion;
+	cout << "\n¿Desea cambiar los parámetros por defecto? [s/n]: ";
+	cin >> opcion;
+
+	switch (opcion) {
+		case 's':
+		case 'S': {
+			cout << "\n\tAncho de línea [>=2]: ";
+			cin >> lineWidth;
+			cout << "\n\tÁngulo (en grados): ";
+			cin >> ANGLE;
+		} break;
+		
+		default: break;
+	}
+
+
+	LIMPIA;
+	cabecera();
+	cout << "\n\nÁrbol seleccionado: " << kindOfTree;
+	cout << "\n\nParámetros del árbol seleccionado:";
+	cout << "\n\n\tAncho de línea: " << lineWidth;
+	cout << "\n\tÁngulo: " << ANGLE;
+	cout << endl << endl;
+
 
 	cout << "\n\t Teclas de ayuda:";
 	cout << "\n\t\t pulsar 'q' para salir de la simulacion";
@@ -383,7 +429,7 @@ void menu() {
 	cout << "\n\t\t pulsar 'x' para alejar la camara";
 	cout << "\n\t\t pulsar 'z' para acercar la camara \n\n";
 
-	system("pause");
+	ESPERA;
 
 	switch (kindOfTree) {
 		case 1: 
@@ -420,6 +466,8 @@ void menu() {
 }
 
 int main(int argc, char** argv) {
+
+	setlocale(LC_ALL, "spanish");
 
 	menu();
 
