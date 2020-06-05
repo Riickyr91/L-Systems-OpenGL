@@ -60,6 +60,9 @@ float eyeX, eyeY, eyeZ, lookX, lookY, lookZ, upX, upY, upZ, fieldOfView, length 
 // Grosor tronco
 float lineWidth = 6;
 
+// Altura árbol
+float lengthMax;
+
 // L-System
 string str = "X";
 
@@ -195,12 +198,12 @@ void expand(float num) {
 			if (num < 0.4) {
 
 				switch (kindOfTree) {
-				case 1: str.replace(i, 1, "D[LXV]D[RXV]LX");	 break; // Arbol 1
-				case 2: str.replace(i, 1, "D[RDXV]D[LDXV]DX");	 break; // Arbol 2
-				case 3: str.replace(i, 1, "D[RXV]D[LXV][X]X");	 break; // Arbol 3
-				case 4: str.replace(i, 1, "D[RX][LX]RX");		 break; // Arbol 4
-				case 5: str.replace(i, 1, "D[RX][LX]DX");		 break; // Arbol 5
-				case 6: str.replace(i, 1, "DL[[X]RX]RD[RDX]LX"); break; // Arbol 6
+					case 1: str.replace(i, 1, "D[LXV]D[RXV]LX");	 break; // Arbol 1
+					case 2: str.replace(i, 1, "D[RDXV]D[LDXV]DX");	 break; // Arbol 2
+					case 3: str.replace(i, 1, "D[RXV]D[LXV][X]X");	 break; // Arbol 3
+					case 4: str.replace(i, 1, "D[RX][LX]RX");		 break; // Arbol 4
+					case 5: str.replace(i, 1, "D[RX][LX]DX");		 break; // Arbol 5
+					case 6: str.replace(i, 1, "DL[[X]RX]RD[RDX]LX"); break; // Arbol 6
 				}
 
 
@@ -208,24 +211,24 @@ void expand(float num) {
 			else {
 
 				switch (kindOfTree) {
-				case 1: str.replace(i, 1, "D[RXV]D[LXV]RX");	 break; // Arbol 1
-				case 2: str.replace(i, 1, "D[LDXV]D[RDXV]DX");	 break; // Arbol 2
-				case 3: str.replace(i, 1, "D[LXV]D[RXV]X");		 break; // Arbol 3
-				case 4: str.replace(i, 1, "D[LX][RX]LX");		 break; // Arbol 4
-				case 5: str.replace(i, 1, "D[LX][RX]DX");		 break; // Arbol 5
-				case 6: str.replace(i, 1, "DR[[X]LX]LD[LDX]RX"); break; // Arbol 6
+					case 1: str.replace(i, 1, "D[RXV]D[LXV]RX");	 break; // Arbol 1
+					case 2: str.replace(i, 1, "D[LDXV]D[RDXV]DX");	 break; // Arbol 2
+					case 3: str.replace(i, 1, "D[LXV]D[RXV]X");		 break; // Arbol 3
+					case 4: str.replace(i, 1, "D[LX][RX]LX");		 break; // Arbol 4
+					case 5: str.replace(i, 1, "D[LX][RX]DX");		 break; // Arbol 5
+					case 6: str.replace(i, 1, "DR[[X]LX]LD[LDX]RX"); break; // Arbol 6
 				}
 
 
 			}
 
 			switch (kindOfTree) {
-			case 1: i = i + 13; break; // arbol 1
-			case 2:
-			case 3: i = i + 15; break; // arbol 2 y 3
-			case 4: i = i + 13; break; // arbol 4
-			case 5: i = i + 10; break; // arbol 5
-			case 6: i = i + 17;  break; // arbol 6
+				case 1: i = i + 13; break; // arbol 1
+				case 2:
+				case 3: i = i + 15; break; // arbol 2 y 3
+				case 4: i = i + 13; break; // arbol 4
+				case 5: i = i + 10; break; // arbol 5
+				case 6: i = i + 17;  break; // arbol 6
 			}
 
 		}
@@ -289,33 +292,11 @@ void animate() {
 	// Change the angle to make it blow in the wind
 	float numR = (float)rand() / RAND_MAX;
 
-	/*
-	if (ANGLE > 21.5) {
-		if (numR < 0.5) {
-			incr = -0.15F;
-		}
-		else {
-			incr = -0.1F;
-		}
-	}
-	else if (ANGLE < 18.5) {
-		if (numR > 0.5) {
-			incr = 0.15F;
-		}
-		else {
-			incr = 0.1F;
-		}
-	}
-	*/
-
 	incr = 0;
 
 	ANGLE += incr;
 	
-
-	// Crear una variable lengthMax y asociarle un máximo a cada árbol en el case
-
-	if (depth < DEPTH && length < 1.32501)
+	if (depth < DEPTH && length < lengthMax)
 		length += 0.001F;
 
 	//cout << length << "\n";
@@ -380,19 +361,61 @@ void menu() {
 
 	do {
 		LIMPIA;
-		cout << "Escoge tipo de arbol [1-6]: ";
+		cout << "***************************** L-SYSTEM  ******************************\n";
+		cout << "\t\t\tRealizado por: \n";
+		cout << "\t\t\t\t Marina Delgado\n";
+		cout << "\t\t\t\t Ricardo Manuel Ruiz\n";
+		cout << "**********************************************************************\n\n";
+		cout << "\nEscoge tipo de arbol [1-6]: ";
 		cin >> kindOfTree;
+
+		if (kindOfTree < 1 || kindOfTree > 7) {
+			cout << "\n\t Tecla erronea \n";
+			system("pause");
+		}
 
 	} while (kindOfTree < 1 || kindOfTree > 7);
 
-	
+	cout << "\n\t Teclas de ayuda:";
+	cout << "\n\t\t pulsar 'q' para salir de la simulacion";
+	cout << "\n\t\t pulsar 'a' para rotacion y movimiento automatico de cámara";
+	cout << "\n\t\t pulsar 'w' para resetear la camara";
+	cout << "\n\t\t pulsar 'x' para alejar la camara";
+	cout << "\n\t\t pulsar 'z' para acercar la camara \n\n";
+
+	system("pause");
+
 	switch (kindOfTree) {
-	case 1: ANGLE = 25.7;	DEPTH = 5; break;
-	case 2: ANGLE = 20;		DEPTH = 5; break;
-	case 3: ANGLE = 22.5;	DEPTH = 4; break;
-	case 4: ANGLE = 20;		DEPTH = 7; break;
-	case 5: ANGLE = 25.7;	DEPTH = 7; break;
-	case 6: ANGLE = 22.5;	DEPTH = 5; break;
+		case 1: 
+			ANGLE = 25.7;	
+			DEPTH = 5; 
+			lengthMax = 1.32501;
+			break;
+		case 2: 
+			ANGLE = 20;		
+			DEPTH = 5; 
+			lengthMax = 0.8;
+			break;
+		case 3: 
+			ANGLE = 22.5;	
+			DEPTH = 4; 
+			lengthMax = 2.5;
+			break;
+		case 4: 
+			ANGLE = 20;
+			DEPTH = 7;
+			lengthMax = 0.6;
+			break;
+		case 5: 
+			ANGLE = 25.7;
+			DEPTH = 7;			
+			lengthMax = 0.3;
+			break;
+		case 6: 
+			ANGLE = 22.5;	
+			DEPTH = 5; 
+			lengthMax = 1.5;
+			break;
 	} 
 }
 
