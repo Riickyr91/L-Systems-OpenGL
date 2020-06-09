@@ -56,7 +56,7 @@ double lastTime = 0, elapsedTime = 0, lastElapsedTime = 0;
 
 bool cam = false;
 
-float eyeX, eyeY, eyeZ, lookX, lookY, lookZ, upX, upY, upZ, fieldOfView, length = 0.01F, num = 0, incr = 0.1F;
+float eyeX, eyeY, eyeZ, lookX, lookY, lookZ, upX, upY, upZ, fieldOfView, length = 0.01F, num = 0;
 
 // Grosor tronco
 float lineWidth = 6;
@@ -65,7 +65,7 @@ float lineWidth = 6;
 float lengthMax;
 
 // String de Reglas
-string reglas[6] = { "D[LXV]D[RXV]LX", "D[RDXV]D[LDXV]DX", "D[RXV]D[LXV][X]X", "D[RXV][LXV]RX", "D[RX][LX]DX", "DL[[X]RX]RD[RDX]LX"};
+string reglas[7] = { "", "D[LXV]D[RXV]LX", "D[RDXV]D[LDXV]DX", "D[RXV]D[LXV][X]X", "D[RXV][LXV]RX", "D[RX][LX]DX", "DL[[X]RX]RD[RDX]LX"};
 
 // L-System
 string str = "X";
@@ -85,6 +85,11 @@ void pop() {
 }
 
 void rotL() {
+
+	int randNum = rand() % 11 + (-6);
+
+	int randomAngle = ANGLE - randNum;
+
 	glRotatef(ANGLE, 1, 0, 0);
 	glRotatef(ANGLE * 4, 0, 1, 0);
 	glRotatef(ANGLE, 0, 0, 1);
@@ -186,6 +191,10 @@ void draw() {
 
 void expand(float num) {
 	string ch = "";
+	string newArbol = "";
+	string letra = "";
+
+	int longitud = 0;
 
 	for (int i = 0; i < str.length(); i++) {
 		ch = str.at(i);
@@ -202,6 +211,7 @@ void expand(float num) {
 			if (num < 0.4) {
 
 				switch (kindOfTree) {
+					case 0: str.replace(i, 1, reglas[0]);	 break; // Arbol 0
 					case 1: str.replace(i, 1, "D[LXV]D[RXV]LX");	 break; // Arbol 1
 					case 2: str.replace(i, 1, "D[RDXV]D[LDXV]DX");	 break; // Arbol 2
 					case 3: str.replace(i, 1, "D[RXV]D[LXV][X]X");	 break; // Arbol 3
@@ -210,11 +220,22 @@ void expand(float num) {
 					case 6: str.replace(i, 1, "DL[[X]RX]RD[RDX]LX"); break; // Arbol 6
 				}
 
-
 			}
 			else {
 
 				switch (kindOfTree) {
+					case 0: newArbol = reglas[0];
+							for (int z = 0; z < newArbol.length(); z++) {
+								letra = newArbol.at(z);
+								if (letra == "R") {
+									newArbol.replace(z, 1, "L");
+								}
+								else if (letra == "L") {
+									newArbol.replace(z, 1, "R");
+								}
+							}
+							str.replace(i, 1, reglas[0]);	 
+							break; //Arbol 0
 					case 1: str.replace(i, 1, "D[RXV]D[LXV]RX");	 break; // Arbol 1
 					case 2: str.replace(i, 1, "D[LDXV]D[RDXV]DX");	 break; // Arbol 2
 					case 3: str.replace(i, 1, "D[LXV]D[RXV]X");		 break; // Arbol 3
@@ -223,10 +244,12 @@ void expand(float num) {
 					case 6: str.replace(i, 1, "DR[[X]LX]LD[LDX]RX"); break; // Arbol 6
 				}
 
-
 			}
 
 			switch (kindOfTree) {
+				case 0: longitud = newArbol.length();
+						i = i - 1 + longitud;
+						break;// arbol 0
 				case 1: i = i + 13; break; // arbol 1
 				case 2:
 				case 3: i = i + 15; break; // arbol 2 y 3
@@ -295,10 +318,6 @@ void animate() {
 
 	// Change the angle to make it blow in the wind
 	float numR = (float)rand() / RAND_MAX;
-
-	incr = 0;
-
-	ANGLE += incr;
 	
 	if (depth < DEPTH && length < lengthMax)
 		length += 0.001F;
@@ -308,9 +327,8 @@ void animate() {
 	if (elapsedTime - lastElapsedTime > 2000 && depth < DEPTH) {
 		depth++;
 		lastElapsedTime = elapsedTime;
-		cout << "a ";
-
 	}
+
 	elapsedTime = elapsedTime / 5000;
 	float t = (sin((elapsedTime * PI - PI / 2)) + 1) / 2;
 	float p = (1 - t) * STARTX + t * ENDX;
@@ -318,7 +336,7 @@ void animate() {
 	if (cam)
 		eyeX = p;
 	
-	glutPostRedisplay();
+	//glutPostRedisplay();
 
 }
 
@@ -351,11 +369,11 @@ void keyboard(unsigned char key, int x, int y)
 	case 97:			// a - Move the camera
 		cam = true;
 		break;
-	case 100:			// d - Increase camera X-coordinate
-		eyeX++;
+	case 100:			// d - Increase camera Y-coordinate
+		eyeY += 4;
 		break;
-	case 102:			// f - Decrease camera X-coordinate
-		eyeX--;
+	case 102:			// f - Decrease camera Y-coordinate
+		eyeY -= 4;
 		break;
 	}
 }
@@ -372,67 +390,93 @@ void cabecera() {
 // Funcion que muestra el menú por consola
 void menu() {
 
+	int opcion;
+
 	do {
 		LIMPIA;
 		cabecera();
-		cout << "\nEscoge tipo de arbol [1-6]: ";
-		cin >> kindOfTree;
 
-		if (kindOfTree < 1 || kindOfTree > 6) {
+		cout << "\n\t1.- Crear arbol con regla propia.";
+		cout << "\n\t2.- Generar arbol con reglas predefinidas. ";
+
+		cout << "\n\n\tOpcion : ";
+		cin >> opcion;
+
+		if (opcion != 1 && opcion != 2) {
 			cout << "\n\tTecla erronea \n";
 			ESPERA;
 		}
 
-	} while (kindOfTree < 1 || kindOfTree > 6);
+		if (opcion == 1) {
+			kindOfTree = 0;
+		}
 
-	switch (kindOfTree) {
-	case 1:
-		ANGLE = 25.7;
-		DEPTH = 5;
-		lengthMax = 1.32501;
-		break;
-	case 2:
-		ANGLE = 20;
-		DEPTH = 5;
-		lengthMax = 0.8;
-		break;
-	case 3:
-		ANGLE = 22.5;
-		DEPTH = 4;
-		lengthMax = 2.5;
-		break;
-	case 4:
-		ANGLE = 20;
-		DEPTH = 7;
-		lengthMax = 0.6;
-		break;
-	case 5:
-		ANGLE = 25.7;
-		DEPTH = 7;
-		lengthMax = 0.3;
-		break;
-	case 6:
-		ANGLE = 22.5;
-		DEPTH = 5;
-		lengthMax = 1.5;
-		break;
-	}
+	} while (opcion != 1 && opcion != 2);
 
-	LIMPIA;
-	cabecera();
+	if (kindOfTree != 0) {
 
-	cout << "\nÁrbol seleccionado: " << kindOfTree;
-	cout << "\n\nParámetros por defecto del árbol seleccionado:";
-	cout << "\n\n\tRegla -> " << reglas[kindOfTree - 1];
-	cout << "\n\tAncho de línea -> " << lineWidth;
-	cout << "\n\tÁngulo -> " << ANGLE;
-	cout << endl << endl;
+		do {
+			LIMPIA;
+			cabecera();
+			cout << "\n\tEscoge tipo de arbol [1-6]: ";
+			cin >> kindOfTree;
 
-	char opcion;
-	cout << "\n¿Desea cambiar los parámetros por defecto ( excluyendo la regla )? [s/n]: ";
-	cin >> opcion;
+			if (kindOfTree < 1 || kindOfTree > 6) {
+				cout << "\n\tTecla erronea \n";
+				ESPERA;
+			}
 
-	switch (opcion) {
+		} while (kindOfTree < 1 || kindOfTree > 6);
+
+		switch (kindOfTree) {
+		case 1:
+			ANGLE = 25.7;
+			DEPTH = 5;
+			lengthMax = 1.32501;
+			break;
+		case 2:
+			ANGLE = 20;
+			DEPTH = 5;
+			lengthMax = 0.8;
+			break;
+		case 3:
+			ANGLE = 22.5;
+			DEPTH = 4;
+			lengthMax = 2.5;
+			break;
+		case 4:
+			ANGLE = 20;
+			DEPTH = 7;
+			lengthMax = 0.6;
+			break;
+		case 5:
+			ANGLE = 25.7;
+			DEPTH = 7;
+			lengthMax = 0.3;
+			break;
+		case 6:
+			ANGLE = 22.5;
+			DEPTH = 5;
+			lengthMax = 1.5;
+			break;
+		}
+
+
+		LIMPIA;
+		cabecera();
+
+		cout << "\nÁrbol seleccionado: " << kindOfTree;
+		cout << "\n\nParámetros por defecto del árbol seleccionado:";
+		cout << "\n\n\tRegla -> " << reglas[kindOfTree];
+		cout << "\n\tAncho de línea -> " << lineWidth;
+		cout << "\n\tÁngulo -> " << ANGLE;
+		cout << endl << endl;
+
+		char opcion;
+		cout << "\n¿Desea cambiar los parámetros por defecto ( excluyendo la regla )? [s/n]: ";
+		cin >> opcion;
+
+		switch (opcion) {
 		case 's':
 		case 'S': {
 			cout << "\n\tAncho de línea [>=2]: ";
@@ -440,15 +484,43 @@ void menu() {
 			cout << "\n\tÁngulo (en grados): ";
 			cin >> ANGLE;
 		} break;
-		
+
 		default: break;
+		}
+
+	}
+
+	else {
+		LIMPIA;
+		cabecera();
+		cout << "\n\tGuia rapida sobre la reglas: ";
+		cout << "\n\t\t D -> Inserta tallo ( todas las reglas deben empezar por D)";
+		cout << "\n\t\t [ -> Abre ramificación, debe estar continuada por R o L";
+		cout << "\n\t\t ] -> Cierra ramificacion, debe estar predecedida de X en el caso de que no haya hojas";
+		cout << "\n\t\t R -> Rotacion hacia la derecha";
+		cout << "\n\t\t L -> Rotacion hacia la izquerda";
+		cout << "\n\t\t V -> Inserta hoja, debe estar situada entre la X y el cierre de ramificación ]";
+		cout << "\n\t\t X -> Continua la repetición, debe existir una al final de la regla";
+		cout << "\n\n\t Ejemplo de regla -> D[LDXV]D[RDXV]DX \n\n";
+
+		cout << "\n\tInserte la regla: ";
+		cin >> reglas[0];
+		cout << "\n\tDEPTH ( profundidad / repeticiones necesarias ) [>=2]: ";
+		cin >> DEPTH;
+		cout << "\n\tInserte la longitud máxima del tallo: ";
+		cin >> lengthMax;
+		cout << "\n\tAncho de línea [>=2]: ";
+		cin >> lineWidth;
+		cout << "\n\tÁngulo (en grados): ";
+		cin >> ANGLE;
+
 	}
 
 	LIMPIA;
 	cabecera();
 	cout << "\n\nÁrbol seleccionado: " << kindOfTree;
 	cout << "\n\nParámetros del árbol seleccionado:";
-	cout << "\n\n\tRegla -> " << reglas[kindOfTree - 1];
+	cout << "\n\n\tRegla -> " << reglas[kindOfTree];
 	cout << "\n\tAncho de línea: " << lineWidth;
 	cout << "\n\tÁngulo: " << ANGLE;
 	cout << endl;
@@ -457,6 +529,8 @@ void menu() {
 	cout << "\n\t\t pulsar 'q' para salir de la simulacion";
 	cout << "\n\t\t pulsar 'a' para rotacion y movimiento automatico de cámara";
 	cout << "\n\t\t pulsar 'w' para resetear la camara";
+	cout << "\n\t\t pulsar 'd' para subir la camara";
+	cout << "\n\t\t pulsar 'f' para bajar la camara";
 	cout << "\n\t\t pulsar 'x' para alejar la camara";
 	cout << "\n\t\t pulsar 'z' para acercar la camara \n\n";
 
