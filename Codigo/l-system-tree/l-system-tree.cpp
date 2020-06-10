@@ -64,6 +64,9 @@ float lineWidth = 6;
 // Altura árbol
 float lengthMax;
 
+// Ángulo aleatorio (dentro del rango) del arbol
+//int randomAngle;
+
 // String de Reglas
 string reglas[7] = { "", "D[LXV]D[RXV]LX", "D[RDXV]D[LDXV]DX", "D[RXV]D[LXV][X]X", "D[RXV][LXV]RX", "D[RX][LX]DX", "DL[[X]RX]RD[RDX]LX"};
 
@@ -77,6 +80,7 @@ void push() {
 	glPushMatrix();
 	if (lineWidth > 0)
 		lineWidth -= 1;
+
 }
 
 void pop() {
@@ -85,14 +89,11 @@ void pop() {
 }
 
 void rotL() {
-
-	int randNum = rand() % 11 + (-6);
-
-	int randomAngle = ANGLE - randNum;
-
+	
 	glRotatef(ANGLE, 1, 0, 0);
 	glRotatef(ANGLE * 4, 0, 1, 0);
 	glRotatef(ANGLE, 0, 0, 1);
+	
 }
 
 void rotR() {
