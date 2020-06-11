@@ -56,16 +56,13 @@ double lastTime = 0, elapsedTime = 0, lastElapsedTime = 0;
 
 bool cam = false;
 
-float eyeX, eyeY, eyeZ, lookX, lookY, lookZ, upX, upY, upZ, fieldOfView, length = 0.01F, num = 0;
+float eyeX, eyeY, eyeZ, lookX, lookY, lookZ, upX, upY, upZ, fieldOfView, length = 0.01F, num = 0, incr = 0.1;
 
 // Grosor tronco
 float lineWidth = 6;
 
 // Altura árbol
 float lengthMax;
-
-// Ángulo aleatorio (dentro del rango) del arbol
-//int randomAngle;
 
 // String de Reglas
 string reglas[7] = { "", "D[LXV]D[RXV]LX", "D[RDXV]D[LDXV]DX", "D[RXV]D[LXV][X]X", "D[RXV][LXV]RX", "D[RX][LX]DX", "DL[[X]RX]RD[RDX]LX"};
@@ -80,7 +77,6 @@ void push() {
 	glPushMatrix();
 	if (lineWidth > 0)
 		lineWidth -= 1;
-
 }
 
 void pop() {
@@ -89,11 +85,9 @@ void pop() {
 }
 
 void rotL() {
-	
 	glRotatef(ANGLE, 1, 0, 0);
 	glRotatef(ANGLE * 4, 0, 1, 0);
 	glRotatef(ANGLE, 0, 0, 1);
-	
 }
 
 void rotR() {
@@ -320,6 +314,29 @@ void animate() {
 	// Change the angle to make it blow in the wind
 	float numR = (float)rand() / RAND_MAX;
 	
+	if (ANGLE > 21.5) {
+		if (numR < 0.5) {
+			incr = -0.15;
+		}
+		else {
+			incr = -0.1;
+		}
+	}
+	else if (ANGLE < 18.5) {
+		if (numR > 0.5) {
+			incr = 0.15;
+		}
+		else {
+			incr = 0.1;
+		}
+	}
+
+	if (kindOfTree == 6) {
+		incr = 0;
+	}
+
+	ANGLE += 0.8*incr;
+
 	if (depth < DEPTH && length < lengthMax)
 		length += 0.001F;
 
@@ -462,6 +479,7 @@ void menu() {
 			break;
 		}
 
+		lineWidth = DEPTH;
 
 		LIMPIA;
 		cabecera();
