@@ -115,3 +115,7 @@ Aquí veremos todos los árboles predefinidos que tenemos en la aplicación
 </p> 
 
 ## Posibles mejoras
+Como hemos podido ver en nuestro proyecto, basandonos en un proyecto de Erik Paluka, hemos mejorado la generación de árboles con L-system pero gráficamente es muy similar, por lo que las posibles mejoras están destinadas a la mejora gráfica para que sea más realista:
+-   Generación de ramas con un ángulo aleatorio entre unos márgenes.
+-   Mejora de texturas para que sean texturas realistas, no sólo sea una línea con color.
+-   Mejora de animación del árbol, la animación ahora es igual para todas las ramas y se mueven a la vez, se podría mejorar para que fueran independientes.
