@@ -5,6 +5,7 @@
 ### Por Marina Delgado Pérez y Ricardo Manuel Ruiz Díaz
 
 ## Introducción
+¡¡¡¡ MARINA AQUI DEBES HACER REFERENCIA A PALUKA Y PONER EL ENLACE DE SI REPOSITORIO !!!!!
 
 ## Funcionamiento
 En este apartado, explicaremos desde como ejecutar la aplicación hasta los diferentes apartados de ella.
@@ -72,9 +73,45 @@ Y al pulsa continuar podremos ver el ejemplo del árbol que hemos creado.
   <img src="./Otros/Imagenes/EjemploEscogeRegla.jpg">
 </p> 
 
-
 ## Consideraciones de implementación
 
 ## Ejemplos 
+Aquí veremos todos los árboles predefinidos que tenemos en la aplicación
+
+### Arbol 1
+
+<p align="center">
+  <img src="./Otros/Imagenes/Arbol1.jpg">
+</p> 
+
+### Arbol 2
+
+<p align="center">
+  <img src="./Otros/Imagenes/Arbol2.jpg">
+</p> 
+
+### Arbol 3
+
+<p align="center">
+  <img src="./Otros/Imagenes/Arbol3.jpg">
+</p> 
+
+### Arbol 4
+
+<p align="center">
+  <img src="./Otros/Imagenes/Arbol4.jpg">
+</p> 
+
+### Arbol 5
+
+<p align="center">
+  <img src="./Otros/Imagenes/Arbol5.jpg">
+</p> 
+
+### Arbol 6
+
+<p align="center">
+  <img src="./Otros/Imagenes/Arbol6.jpg">
+</p> 
 
 ## Posibles mejoras
