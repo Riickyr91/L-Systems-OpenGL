@@ -1,20 +1,19 @@
 ﻿  l-system-tree.cpp
 C:\Users\Ricar\Dropbox\Universidad\Asignaturas\3 Tercero\Realidad Virtual\Practica\L-Systems-OpenGL\Codigo\l-system-tree\l-system-tree.cpp(59,109): warning C4305: 'inicializando': truncamiento de 'double' a 'float'
-C:\Users\Ricar\Dropbox\Universidad\Asignaturas\3 Tercero\Realidad Virtual\Practica\L-Systems-OpenGL\Codigo\l-system-tree\l-system-tree.cpp(165,29): warning C4244: 'argumento': conversión de 'float' a 'const unsigned int'; posible pérdida de datos
-C:\Users\Ricar\Dropbox\Universidad\Asignaturas\3 Tercero\Realidad Virtual\Practica\L-Systems-OpenGL\Codigo\l-system-tree\l-system-tree.cpp(166,20): warning C4018: '<': no coinciden signed/unsigned
-C:\Users\Ricar\Dropbox\Universidad\Asignaturas\3 Tercero\Realidad Virtual\Practica\L-Systems-OpenGL\Codigo\l-system-tree\l-system-tree.cpp(197,20): warning C4018: '<': no coinciden signed/unsigned
-C:\Users\Ricar\Dropbox\Universidad\Asignaturas\3 Tercero\Realidad Virtual\Practica\L-Systems-OpenGL\Codigo\l-system-tree\l-system-tree.cpp(226,26): warning C4018: '<': no coinciden signed/unsigned
-C:\Users\Ricar\Dropbox\Universidad\Asignaturas\3 Tercero\Realidad Virtual\Practica\L-Systems-OpenGL\Codigo\l-system-tree\l-system-tree.cpp(322,16): warning C4305: '=': truncamiento de 'double' a 'float'
-C:\Users\Ricar\Dropbox\Universidad\Asignaturas\3 Tercero\Realidad Virtual\Practica\L-Systems-OpenGL\Codigo\l-system-tree\l-system-tree.cpp(325,15): warning C4305: '=': truncamiento de 'double' a 'float'
-C:\Users\Ricar\Dropbox\Universidad\Asignaturas\3 Tercero\Realidad Virtual\Practica\L-Systems-OpenGL\Codigo\l-system-tree\l-system-tree.cpp(330,15): warning C4305: '=': truncamiento de 'double' a 'float'
-C:\Users\Ricar\Dropbox\Universidad\Asignaturas\3 Tercero\Realidad Virtual\Practica\L-Systems-OpenGL\Codigo\l-system-tree\l-system-tree.cpp(333,14): warning C4305: '=': truncamiento de 'double' a 'float'
-C:\Users\Ricar\Dropbox\Universidad\Asignaturas\3 Tercero\Realidad Virtual\Practica\L-Systems-OpenGL\Codigo\l-system-tree\l-system-tree.cpp(341,19): warning C4244: '+=': conversión de 'double' a 'float'; posible pérdida de datos
-C:\Users\Ricar\Dropbox\Universidad\Asignaturas\3 Tercero\Realidad Virtual\Practica\L-Systems-OpenGL\Codigo\l-system-tree\l-system-tree.cpp(354,10): warning C4244: 'inicializando': conversión de 'double' a 'float'; posible pérdida de datos
-C:\Users\Ricar\Dropbox\Universidad\Asignaturas\3 Tercero\Realidad Virtual\Practica\L-Systems-OpenGL\Codigo\l-system-tree\l-system-tree.cpp(454,16): warning C4305: '=': truncamiento de 'double' a 'float'
-C:\Users\Ricar\Dropbox\Universidad\Asignaturas\3 Tercero\Realidad Virtual\Practica\L-Systems-OpenGL\Codigo\l-system-tree\l-system-tree.cpp(456,23): warning C4305: '=': truncamiento de 'double' a 'float'
-C:\Users\Ricar\Dropbox\Universidad\Asignaturas\3 Tercero\Realidad Virtual\Practica\L-Systems-OpenGL\Codigo\l-system-tree\l-system-tree.cpp(461,19): warning C4305: '=': truncamiento de 'double' a 'float'
-C:\Users\Ricar\Dropbox\Universidad\Asignaturas\3 Tercero\Realidad Virtual\Practica\L-Systems-OpenGL\Codigo\l-system-tree\l-system-tree.cpp(471,19): warning C4305: '=': truncamiento de 'double' a 'float'
-C:\Users\Ricar\Dropbox\Universidad\Asignaturas\3 Tercero\Realidad Virtual\Practica\L-Systems-OpenGL\Codigo\l-system-tree\l-system-tree.cpp(474,16): warning C4305: '=': truncamiento de 'double' a 'float'
-C:\Users\Ricar\Dropbox\Universidad\Asignaturas\3 Tercero\Realidad Virtual\Practica\L-Systems-OpenGL\Codigo\l-system-tree\l-system-tree.cpp(476,19): warning C4305: '=': truncamiento de 'double' a 'float'
-C:\Users\Ricar\Dropbox\Universidad\Asignaturas\3 Tercero\Realidad Virtual\Practica\L-Systems-OpenGL\Codigo\l-system-tree\l-system-tree.cpp(582,12): warning C4244: 'argumento': conversión de 'time_t' a 'unsigned int'; posible pérdida de datos
+C:\Users\Ricar\Dropbox\Universidad\Asignaturas\3 Tercero\Realidad Virtual\Practica\L-Systems-OpenGL\Codigo\l-system-tree\l-system-tree.cpp(162,29): warning C4244: 'argumento': conversión de 'float' a 'const unsigned int'; posible pérdida de datos
+C:\Users\Ricar\Dropbox\Universidad\Asignaturas\3 Tercero\Realidad Virtual\Practica\L-Systems-OpenGL\Codigo\l-system-tree\l-system-tree.cpp(163,20): warning C4018: '<': no coinciden signed/unsigned
+C:\Users\Ricar\Dropbox\Universidad\Asignaturas\3 Tercero\Realidad Virtual\Practica\L-Systems-OpenGL\Codigo\l-system-tree\l-system-tree.cpp(194,20): warning C4018: '<': no coinciden signed/unsigned
+C:\Users\Ricar\Dropbox\Universidad\Asignaturas\3 Tercero\Realidad Virtual\Practica\L-Systems-OpenGL\Codigo\l-system-tree\l-system-tree.cpp(223,26): warning C4018: '<': no coinciden signed/unsigned
+C:\Users\Ricar\Dropbox\Universidad\Asignaturas\3 Tercero\Realidad Virtual\Practica\L-Systems-OpenGL\Codigo\l-system-tree\l-system-tree.cpp(319,16): warning C4305: '=': truncamiento de 'double' a 'float'
+C:\Users\Ricar\Dropbox\Universidad\Asignaturas\3 Tercero\Realidad Virtual\Practica\L-Systems-OpenGL\Codigo\l-system-tree\l-system-tree.cpp(322,15): warning C4305: '=': truncamiento de 'double' a 'float'
+C:\Users\Ricar\Dropbox\Universidad\Asignaturas\3 Tercero\Realidad Virtual\Practica\L-Systems-OpenGL\Codigo\l-system-tree\l-system-tree.cpp(327,15): warning C4305: '=': truncamiento de 'double' a 'float'
+C:\Users\Ricar\Dropbox\Universidad\Asignaturas\3 Tercero\Realidad Virtual\Practica\L-Systems-OpenGL\Codigo\l-system-tree\l-system-tree.cpp(330,14): warning C4305: '=': truncamiento de 'double' a 'float'
+C:\Users\Ricar\Dropbox\Universidad\Asignaturas\3 Tercero\Realidad Virtual\Practica\L-Systems-OpenGL\Codigo\l-system-tree\l-system-tree.cpp(351,10): warning C4244: 'inicializando': conversión de 'double' a 'float'; posible pérdida de datos
+C:\Users\Ricar\Dropbox\Universidad\Asignaturas\3 Tercero\Realidad Virtual\Practica\L-Systems-OpenGL\Codigo\l-system-tree\l-system-tree.cpp(451,16): warning C4305: '=': truncamiento de 'double' a 'float'
+C:\Users\Ricar\Dropbox\Universidad\Asignaturas\3 Tercero\Realidad Virtual\Practica\L-Systems-OpenGL\Codigo\l-system-tree\l-system-tree.cpp(453,23): warning C4305: '=': truncamiento de 'double' a 'float'
+C:\Users\Ricar\Dropbox\Universidad\Asignaturas\3 Tercero\Realidad Virtual\Practica\L-Systems-OpenGL\Codigo\l-system-tree\l-system-tree.cpp(458,19): warning C4305: '=': truncamiento de 'double' a 'float'
+C:\Users\Ricar\Dropbox\Universidad\Asignaturas\3 Tercero\Realidad Virtual\Practica\L-Systems-OpenGL\Codigo\l-system-tree\l-system-tree.cpp(468,19): warning C4305: '=': truncamiento de 'double' a 'float'
+C:\Users\Ricar\Dropbox\Universidad\Asignaturas\3 Tercero\Realidad Virtual\Practica\L-Systems-OpenGL\Codigo\l-system-tree\l-system-tree.cpp(471,16): warning C4305: '=': truncamiento de 'double' a 'float'
+C:\Users\Ricar\Dropbox\Universidad\Asignaturas\3 Tercero\Realidad Virtual\Practica\L-Systems-OpenGL\Codigo\l-system-tree\l-system-tree.cpp(473,19): warning C4305: '=': truncamiento de 'double' a 'float'
+C:\Users\Ricar\Dropbox\Universidad\Asignaturas\3 Tercero\Realidad Virtual\Practica\L-Systems-OpenGL\Codigo\l-system-tree\l-system-tree.cpp(579,12): warning C4244: 'argumento': conversión de 'time_t' a 'unsigned int'; posible pérdida de datos
   l-system-tree.vcxproj -> C:\Users\Ricar\Dropbox\Universidad\Asignaturas\3 Tercero\Realidad Virtual\Practica\L-Systems-OpenGL\Codigo\Debug\l-system-tree.exe

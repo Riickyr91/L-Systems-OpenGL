@@ -335,7 +335,7 @@ void animate() {
 		incr = 0;
 	}
 
-	ANGLE += 0.8*incr;
+	//ANGLE += 0.8*incr;
 
 	if (depth < DEPTH && length < lengthMax)
 		length += 0.001F;
