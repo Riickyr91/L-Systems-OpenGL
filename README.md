@@ -33,13 +33,43 @@ Empezaremos con la opción 1, si elegimos esta, la siguiente pantalla que nos sa
 Una vez relleno, nos encontramos con el resumen del árbol que hemos descrito y con el manual para manejar la cámara en la visualización del árbol.
 
 <p align="center">
-  <img src="./Otros/Imagenes/InsertaRegla.jpg">
+  <img src="./Otros/Imagenes/ResumenInserteRegla.jpg">
 </p> 
 
 Y por último, podemos visualizar el árbol que hemos creado.
 
 <p align="center">
   <img src="./Otros/Imagenes/EjemploInsertaRegla.jpg">
+</p> 
+
+Ahora veremos la aplicación si escogiesemos la opción 2, es decir, la opción de elegir un árbol entre los predefinidos por el programa. Al elegir esta opción nos encontraremos con la siguiente pantalla, en la que debemos elegir el tipo de árbol ( entre 1 y 6).
+
+<p align="center">
+  <img src="./Otros/Imagenes/EscogeArbol.jpg">
+</p> 
+
+Una vez escogamos un tipo de árbol, nos enseñará un resumen de alguno de sus parámetros como ángulo de creación de las ramas y ancho de las ramas. En esta pantalla nos da opción a modificar estos parámetros.
+
+<p align="center">
+  <img src="./Otros/Imagenes/ResumenEscogeArbol1.jpg">
+</p> 
+
+Si le dieramos a si, nos saldría la siguiente pantalla en la que debemos insertar los nuevos valores de estos parámetros.
+
+<p align="center">
+  <img src="./Otros/Imagenes/ModificaEscogeRegla.jpg">
+</p> 
+
+Al pulsar no en la pregunta de modificación de parámetros o al terminar de modificarlos nos lleva a la siguiente pantalla en la que nos muestra un resumen del árbol y una leyenda con los comandos de la cámara a la hora de la visualización de este ( debemos de tener en cuenta que dependiendo de la complejidad del árbol la cámara se va a mover más fluida o mas lenta)
+
+<p align="center">
+  <img src="./Otros/Imagenes/ResumenEscogeArbol2.jpg">
+</p> 
+
+Y al pulsa continuar podremos ver el ejemplo del árbol que hemos creado.
+
+<p align="center">
+  <img src="./Otros/Imagenes/EjemploEscogeRegla.jpg">
 </p> 
 
 
