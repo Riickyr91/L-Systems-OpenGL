@@ -12,7 +12,7 @@ Para generar los distintos árboles se han utilizado reglas de generación basad
 Se han incluido en el proyecto 6 árboles predefinidos, cada uno con distintas reglas de generacion propias. La aplicación de esas reglas producen los árboles de la imagen siguiente.
 
 <p align="center">
-  <img src="./Otros/Imagenes/Configuracion.jpg">
+  <img src="./Otros/Imagenes/arboles.jpg">
 </p>
 
 La aplicación permite al usuario introducir su propia regla de generacion o mostrar uno de los 6 árboles incluidos. Además, sobre esos árboles permite modificar sus parámetros.
