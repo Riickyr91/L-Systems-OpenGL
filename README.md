@@ -5,7 +5,7 @@
 ### Por Marina Delgado Pérez y Ricardo Manuel Ruiz Díaz
 
 ## Introducción
-¡¡¡¡ MARINA AQUI DEBES HACER REFERENCIA A PALUKA Y PONER EL ENLACE DE SI REPOSITORIO !!!!!
+El objetivo principal de este proyecto es visualizar un árbol. Para ello, nos hemos basado en el proyecto original de [1] [ Erik Paluka](https://pages.github.com/).
 
 ## Funcionamiento
 En este apartado, explicaremos desde como ejecutar la aplicación hasta los diferentes apartados de ella.
@@ -119,3 +119,6 @@ Como hemos podido ver en nuestro proyecto, basandonos en un proyecto de Erik Pal
 -   Generación de ramas con un ángulo aleatorio entre unos márgenes.
 -   Mejora de texturas para que sean texturas realistas, no sólo sea una línea con color.
 -   Mejora de animación del árbol, la animación ahora es igual para todas las ramas y se mueven a la vez, se podría mejorar para que fueran independientes.
+
+
+## Referencias
