@@ -17,7 +17,7 @@ Se han incluido en el proyecto 6 árboles predefinidos, cada uno con distintas r
   <img src="./Otros/Imagenes/arboles.jpg">
 </p>
 
-La aplicación permite al usuario introducir su propia regla de generacion o mostrar uno de los 6 árboles incluidos. Además, sobre esos árboles permite modificar sus parámetros.
+La aplicación permite al usuario introducir su propia regla de generación o mostrar uno de los 6 árboles incluidos. Además, sobre esos árboles permite modificar sus parámetros.
 
 
 
@@ -89,6 +89,28 @@ Y al pulsa continuar podremos ver el ejemplo del árbol que hemos creado.
 
 ## Consideraciones de implementación
 
+
+Las modificaciones realizadas respecto al proyecto original son las siguientes:
+-   Creación de un menú, con el que usuario puede interactuar.
+-   Adición de 6 árboles distintos.
+-   Posibilidad de crear un árbol único.
+-   Movimientos extra de cámara.
+-   Cambio del color del fondo (negro -> blanco).
+-   Animación del viento desactivada, para apreciar mejor el árbol
+
+El programa funciona de la siguiente manera:
+
+1- Se muestra el menú. El usuario navega por él.
+
+2- Se hacen las expansiones de la regla de generación. Estas expansiones dependen del parámetro DEPTH.
+
+3- En cada tick, se dibuja el árbol. 
+
+Debido a que en cada tick se dibuja el árbol entero, no ha sido posible incorporar la aleatoriedad en la generación de ángulos de crecimiento de las ramas. Al considerar un ángulo aleatorio, el efecto que se produce en el árbol es parecido a la animación del viento, pero con movimientos más bruscos.
+
+
+
+
 ## Ejemplos 
 
 
@@ -138,3 +160,7 @@ Como hemos podido ver en nuestro proyecto, basandonos en un proyecto de Erik Pal
 ## Referencias
 
 [1] [ Proyecto de Erik Paluka](https://github.com/paluka/L-Systems-OpenGL).
+
+[2] [ Enunciado del proyecto](https://github.com/jcarpio/rv1920/blob/master/proyecto_rv1920.md).
+
+[3] [ _Lindenmayer System_](https://en.wikipedia.org/wiki/L-system).
