@@ -96,15 +96,19 @@ Las modificaciones realizadas respecto al proyecto original son las siguientes:
 -   Posibilidad de crear un árbol único.
 -   Movimientos extra de cámara.
 -   Cambio del color del fondo (negro -> blanco).
--   Animación del viento desactivada, para apreciar mejor el árbol
+-   Animación del viento desactivada, para apreciar mejor el árbol.
+-   Para los árboles predefinidos, limitación del tamaño final del árbol para que se pueda visualizar correctamente.
 
-El programa funciona de la siguiente manera:
+La ejecución del programa es la siguiente:
 
-1- Se muestra el menú. El usuario navega por él.
+En primer lugar, se muestra el menú para que el usuario interacciona con él. Una vez escogido (o creado) el árbol, se llama a la función expand() el número de veces que indique el parámetro DEPTH. 
+Esta función se encarga de expandir el axioma mediante las reglas de generación. A cada iteración, sustituye cada caracter por su correspondiente cadena de caracteres.
 
-2- Se hacen las expansiones de la regla de generación. Estas expansiones dependen del parámetro DEPTH.
+Una vez terminadas todas las expansiones, se ejecuta el bucle principal del programa, glutMainLoop(). En cada iteración de este bucle se llama a la función display(), que es la responsable de dibujar el árbol (llamando a su vez al método draw()). 
 
-3- En cada tick, se dibuja el árbol. 
+En cada tick del programa, se ejecuta la función draw(). Esta función dibuja contínuamente el árbol mediante las llamadas a las funciones drawLine(), push(), pop(), leaf(), rotR() y rotL(). Estas funciones se llaman en el orden que marque la cadena resultante de todas las expansiones hechas previamente.
+
+Es importante que el árbol se dibuje en todo momento pues, gracias al método keyboard(), el usuario puede mover la cámara para apreciar desde distintos ángulos el árbol. Al mover la cámara, el árbol debe ser dibujado de nuevo.
 
 Debido a que en cada tick se dibuja el árbol entero, no ha sido posible incorporar la aleatoriedad en la generación de ángulos de crecimiento de las ramas. Al considerar un ángulo aleatorio, el efecto que se produce en el árbol es parecido a la animación del viento, pero con movimientos más bruscos.
 
