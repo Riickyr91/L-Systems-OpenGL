@@ -5,11 +5,13 @@
 ### Por Marina Delgado Pérez y Ricardo Manuel Ruiz Díaz
 
 ## Introducción
-El objetivo principal de este proyecto es elaborar una aplicación capaz de visualizar un árbol. Para ello, nos hemos basado en el proyecto original de [1] [ Erik Paluka](https://github.com/paluka/L-Systems-OpenGL).
+El objetivo principal de este proyecto es elaborar una aplicación capaz de visualizar un árbol. Para ello, nos hemos basado en el proyecto original de [ Erik Paluka](https://github.com/paluka/L-Systems-OpenGL).  [1]
 
-Para generar los distintos árboles se han utilizado reglas de generación basadas en [2] [ _Lindenmayer System_](https://en.wikipedia.org/wiki/L-system). Este sistema se basa en aplicar reglas simples a una cadena de caracteres para generar distintas formas. Estos sistemas cuentan con una gramática, un conjunto de reglas y un axioma.
+El enunciado del proyecto puede encontrarse en el siguiente [ enlace](https://github.com/jcarpio/rv1920/blob/master/proyecto_rv1920.md) [2]
 
-Se han incluido en el proyecto 6 árboles predefinidos, cada uno con distintas reglas de generacion propias. La aplicación de esas reglas producen los árboles de la imagen siguiente.
+Para generar los distintos árboles se han utilizado reglas de generación basadas en [ _Lindenmayer System_](https://en.wikipedia.org/wiki/L-system) [3]. Los L-Systems se basan en aplicar reglas simples a una cadena de caracteres para generar distintas formas. Estos sistemas cuentan con una gramática, un conjunto de reglas y un axioma.
+
+Se han incluido en el proyecto 6 árboles predefinidos, cada uno con distintas reglas de generacion propias. La aplicación de esas reglas producen los árboles de la imagen siguiente, pero en 3D.
 
 <p align="center">
   <img src="./Otros/Imagenes/arboles.jpg">
